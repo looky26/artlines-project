@@ -33,7 +33,7 @@ const ShortAndPants = async () => {
   return (
     <div className="bg-white text-black">
       <div className="max-w-5xl mx-auto pt-32">
-        <h1 className="text-4xl font-bold">BASKETBALL</h1>
+        <h1 className="text-4xl font-bold">SHORT AND PANTS</h1>
 
         {/* <!-- Breadcrumb --> */}
         <nav className="flex py-3 text-gray-700 " aria-label="Breadcrumb">
@@ -94,7 +94,7 @@ const ShortAndPants = async () => {
                   ></path>
                 </svg>
                 <span className="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">
-                  BASKETBALL
+                  SHORT AND PANTS
                 </span>
               </div>
             </li>
