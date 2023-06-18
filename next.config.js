@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     experimental: {
-        esmExternals: true,
+        appDir: true,
+        externalDir: true,
+        esmExternals:'loose',
       },
 }
 
