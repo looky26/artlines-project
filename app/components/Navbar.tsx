@@ -1,7 +1,14 @@
+'use client'
+
 import Link from "next/link";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../GlobalRedux/store";
 
 const Navbar = () => {
+
+  const items = useSelector((state: RootState) => state.cart.items);
+
   return (
     <div className="bg-blue-500 flex justify-between px-10 items-center py-2">
       {/* logo */}
@@ -42,9 +49,13 @@ const Navbar = () => {
       {/* links right */}
       <div className="lg:block hidden">
         <ul className="flex space-x-5">
-          <li className="cursor-pointer">MY ACCOUNT</li>
+          <li className="cursor-pointer">
+            <Link href={'/account'}>
+            MY ACCOUNT
+            </Link>
+            </li>
           <li className="cursor-pointer">SEARCH</li>
-          <li className="flex cursor-pointer">
+          <Link href={'/cart'} className="flex cursor-pointer">
             CART
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -60,8 +71,8 @@ const Navbar = () => {
                 d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
               />
             </svg>
-            <p>0</p>
-          </li>
+            <p>{items.length}</p>
+          </Link>
         </ul>
       </div>
     </div>

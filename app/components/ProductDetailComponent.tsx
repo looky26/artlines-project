@@ -1,10 +1,25 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import PortableText from "react-portable-text";
 import { urlFor } from "@/utils/client";
+import DownloadFile from "./DownloadFile";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../GlobalRedux/store";
+import { addItem, clearNotification  } from "../GlobalRedux/Features/cartSlice";
 
 const ProductDetailComponent = ({ productSlug }: any) => {
-  console.log("product image:" + urlFor(productSlug.productImage).url());
+
+  const dispatch = useDispatch();
+
+  const notification = useSelector((state: RootState) => state.cart.notification);
+
+  useEffect(() => {
+    if (notification) {
+      dispatch(clearNotification());
+    }
+  }, []);
+  
 
   return (
     <div className="max-w-5xl mx-auto pt-28 text-black">
@@ -112,9 +127,25 @@ const ProductDetailComponent = ({ productSlug }: any) => {
         <div className="space-y-5 flex flex-col items-center lg:items-start px-5">
           <h1 className="font-bold text-3xl">{productSlug.title}</h1>
           <p className="text-3xl">Php{productSlug.price}</p>
-          <button className="bg-black text-white px-16 rounded-md py-3 hover:bg-gray-700">
+          
+          <h1 className={`${notification === "Item already in cart" ? 'text-red-500' : 'text-black'}`}>{notification}</h1>
+
+          <button
+            className="bg-black text-white px-16 rounded-md py-3 hover:bg-gray-700"
+            onClick={() =>
+              dispatch(
+                addItem({
+                  id: productSlug._id,
+                  title: productSlug.title,
+                  price: productSlug.price,
+                  productImage: productSlug.productImage,
+                })
+              )
+            }
+          >
             Add to Bag
           </button>
+
           <div className="space-y-3">
             <PortableText
               content={productSlug.productDescription}
@@ -142,6 +173,7 @@ const ProductDetailComponent = ({ productSlug }: any) => {
           <div>
             <h1 className="font-bold">Share this product with your friends</h1>
           </div>
+          <DownloadFile productSlug={productSlug} />
         </div>
       </div>
     </div>
