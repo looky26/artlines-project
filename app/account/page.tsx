@@ -1,6 +1,6 @@
 "use client";
 
-import { SignIn, SignInButton, useUser } from "@clerk/nextjs";
+import { SignIn, SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
 import Link from "next/link";
 
 const Account = () => {
@@ -155,6 +155,7 @@ const Account = () => {
             <div className="pt-40">
               <p>This is a protected page.</p>
               <SignInButton mode="modal" />
+              <SignOutButton/>
             </div>
           </div>
         )}
