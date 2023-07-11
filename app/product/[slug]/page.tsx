@@ -1,3 +1,5 @@
+'use client'
+
 import ProductDetailComponent from "@/app/components/ProductDetailComponent";
 import { sanityClient } from "@/utils/client";
 import Link from "next/link";
@@ -50,6 +52,8 @@ const ProductDetail = async ({ params: { slug } }: PageProps) => {
   console.log(productSlug);
 
   return (
+    
+
     <div className="bg-white text-black">
       <ProductDetailComponent productSlug={productSlug} />
 
