@@ -18,6 +18,7 @@ const fetchProductDetailData = async (slug: string) => {
       productDescription,
       price,
       slug,
+      priceId,
       productImage,
       "categories": categories[]->{
         title

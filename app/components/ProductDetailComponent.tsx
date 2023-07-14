@@ -138,6 +138,7 @@ const ProductDetailComponent = ({ productSlug }: any) => {
                   id: productSlug._id,
                   title: productSlug.title,
                   price: productSlug.price,
+                  priceId: productSlug.priceId,
                   productImage: productSlug.productImage,
                 })
               )
