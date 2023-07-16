@@ -1,10 +1,11 @@
 "use client";
 
-import { SignIn, SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
+import { SignIn, SignInButton, SignOutButton, SignedIn, SignedOut, useUser } from "@clerk/nextjs";
 import Link from "next/link";
 
 const Account = () => {
   const { isLoaded, isSignedIn, user } = useUser();
+  console.log("Account Page",user)
 
   return (
     <div className="bg-white text-black h-[100vh]">
@@ -120,28 +121,32 @@ const Account = () => {
               />
             </svg>
             <div>
-              {!isLoaded || !isSignedIn ? (
-                <>
+             
+                <SignedOut>
                   <h1 className="font-bold">Guest Account</h1>
                   <p>You are not signed in</p>
-                </>
-              ) : (
-                <>
-                  <p>Welcome {user.fullName}</p>
-                </>
-              )}
+                </SignedOut>
+             
+                <SignedIn>
+                  <p> {isLoaded ? `Welcome ${user?.fullName}`: 'loading...'}</p>
+                  <p> {isLoaded ? `Welcome ${user?.primaryEmailAddress?.emailAddress}`: 'loading...'}</p>
+                  
+                </SignedIn>
+              
             </div>
           </div>
         </div>
 
         {/* right */}
 
-        {isSignedIn ? (
-          <div>
+       <SignedIn>
+       <div>
             <h1>Order History</h1>
           </div>
-        ) : (
-          <div className="">
+       </SignedIn>
+     
+      <SignedOut>
+      <div className="">
             <h1 className="font-bold text-lg">Join us or sign in</h1>
             <p className="pt-5">
               Track your future orders, checkout faster, and sync your
@@ -154,11 +159,13 @@ const Account = () => {
             </p>
             <div className="pt-40">
               <p>This is a protected page.</p>
-              <SignInButton mode="modal" />
+              <SignInButton mode="modal" redirectUrl="/account"/>
               <SignOutButton/>
             </div>
           </div>
-        )}
+      </SignedOut>
+    
+ 
       </div>
     </div>
   );

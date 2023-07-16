@@ -6,15 +6,30 @@ import { RootState } from "../GlobalRedux/store";
 import { clearCart, removeFromCart } from "../GlobalRedux/Features/cartSlice";
 import Image from "next/image";
 import { urlFor } from "@/utils/client";
+import { checkout } from "../../checkout";
+import {
+  SignIn,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+  useUser,
+} from "@clerk/nextjs";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+
+const stripePromise = loadStripe('pk_test_51NTrBSA3aTzlY3vKif07vzJozpEG3eieVK2waJdCYGmNPThp12sTNZsDUSSwzZA43GeMFNXqGLSnXzzxlgR3UONV00RLxTppaS');
 
 interface BasketItem {
   id: string;
   title: string;
   price: number;
+  priceId: string;
   productImage: string;
 }
 
 const CheckOutProduct = () => {
+  const { isLoaded, isSignedIn, user } = useUser();
   const items = useSelector((state: RootState) => state.cart.items);
   const dispatch = useDispatch();
 
@@ -24,6 +39,23 @@ const CheckOutProduct = () => {
     const itemPrices = items.map((item: BasketItem) => item.price * 1);
     const totalPrice = itemPrices.reduce((total, price) => total + price, 0);
     return totalPrice;
+  };
+
+  const createCheckoutSession = async () => {
+    const stripe = await stripePromise;
+
+    //Call the back end to create a checkout session...
+    const checkoutSession = await axios.post("/api/create-checkout-session/", {
+      items,
+      email: user?.primaryEmailAddress?.emailAddress,
+    });
+    // Redirect customer to stripe checkout
+    const result = await stripe?.redirectToCheckout({
+      sessionId: checkoutSession.data.id,
+    });
+    if (result?.error) {
+      alert(result.error.message);
+    }
   };
 
   return (
@@ -149,10 +181,31 @@ const CheckOutProduct = () => {
         </div>
 
         {/* right */}
-            <div>
-              <h1>Check out</h1>
-            </div>
+        <div>
+          <SignedIn>
+            <button
+              onClick={createCheckoutSession}
+              // onClick={() => {
+              //   checkout({
+              //     lineItems: items.map((item: any) => ({
+              //       price: item.priceId,
+              //       quantity: 1,
+              //     })),
+              //   })
 
+              // }
+
+              // }
+            >
+              Proceed to check out
+            </button>
+          </SignedIn>
+          <SignedOut>
+            <SignInButton mode="modal" redirectUrl="/cart">
+              Please sign in to check out
+            </SignInButton>
+          </SignedOut>
+        </div>
       </div>
 
       {items.length === 0 && (
