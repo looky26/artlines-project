@@ -34,8 +34,8 @@ export default async function handler(req, res) {
       quantity: item.quantity,
     })),
     mode: 'payment',
-    success_url: 'http://localhost:3000/success',
-    cancel_url: 'http://localhost:3000/cart',
+    success_url: `${req.headers.origin}/?success=true`,
+    cancel_url: `${req.headers.origin}/?canceled=true`,
     metadata: {
       email,
       images: imageUrls.join(','),
