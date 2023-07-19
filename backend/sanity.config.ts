@@ -3,6 +3,7 @@ import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
 
+
 export default defineConfig({
   name: 'default',
   title: 'artlines-project',
@@ -10,7 +11,9 @@ export default defineConfig({
   projectId: 'hi2kbse1',
   dataset: 'production',
 
-  plugins: [deskTool(), visionTool()],
+  plugins: [deskTool(), visionTool(), {
+    name:"firebase-uploader"
+  }],
 
   schema: {
     types: schemaTypes,
