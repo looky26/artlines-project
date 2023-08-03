@@ -52,7 +52,9 @@ const CheckOutProduct = () => {
     // Redirect customer to stripe checkout
     const result = await stripe?.redirectToCheckout({
       sessionId: checkoutSession.data.id,
+   
     });
+
     if (result?.error) {
       alert(result.error.message);
     }

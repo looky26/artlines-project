@@ -13,18 +13,18 @@ import { getStorage, ref, getDownloadURL } from "firebase/storage";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAQl6RNeFwU4rwficIjY4N-whlABkC43f8",
-  authDomain: "artlinesproject-9810f.firebaseapp.com",
-  projectId: "artlinesproject-9810f",
-  storageBucket: "artlinesproject-9810f.appspot.com",
-  messagingSenderId: "578165981512",
-  appId: "1:578165981512:web:2068e8d5e013017ecdb37d",
-  measurementId: "G-LWXT8N474M",
+  apiKey: "AIzaSyBQ742Ixv8LpH7g4FFacZeA_4q1ugUqEZY",
+  authDomain: "artlines-579f5.firebaseapp.com",
+  projectId: "artlines-579f5",
+  storageBucket: "artlines-579f5.appspot.com",
+  messagingSenderId: "442020715475",
+  appId: "1:442020715475:web:4f2204cf6af08a9e092d26",
+  measurementId: "G-ZXQV98SJ7F"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+
 
 const storage = getStorage(app);
 
