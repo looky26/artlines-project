@@ -9,7 +9,7 @@ import { RootState } from "../GlobalRedux/store";
 import { addItem, clearNotification  } from "../GlobalRedux/Features/cartSlice";
 
 const ProductDetailComponent = ({ productSlug }: any) => {
-  console.log("SLUG:", productSlug.slug.current)
+  console.log("SLUG:", productSlug.categories[0].title.toLowerCase())
 
   const dispatch = useDispatch();
 
@@ -106,7 +106,7 @@ const ProductDetailComponent = ({ productSlug }: any) => {
                 ></path>
               </svg>
               <Link
-                href={`/mockups/${productSlug.slug.current}`}
+                href={`/mockups/${productSlug.categories[0].title.toLowerCase()}`}
                 className="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400"
               >
                 {productSlug.categories[0].title}
