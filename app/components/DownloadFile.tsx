@@ -31,7 +31,7 @@ const storage = getStorage(app);
 
 
 const DownloadFile = ({productSlug}:any) => {
-    console.log('productSlug:', productSlug.title + '.rar')
+    //console.log('productSlug:', productSlug.title + '.rar')
   const [isPaid, setIsPaid] = useState(true);
 
   const pathReference = ref(storage, productSlug.title + '.rar');

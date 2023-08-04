@@ -9,16 +9,17 @@ import { RootState } from "../GlobalRedux/store";
 import { addItem, clearNotification  } from "../GlobalRedux/Features/cartSlice";
 
 const ProductDetailComponent = ({ productSlug }: any) => {
+  console.log("SLUG:", productSlug.slug.current)
 
   const dispatch = useDispatch();
 
   const notification = useSelector((state: RootState) => state.cart.notification);
 
-  useEffect(() => {
-    if (notification) {
-      dispatch(clearNotification());
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (notification) {
+  //     dispatch(clearNotification());
+  //   }
+  // }, []);
   
 
   return (
@@ -105,7 +106,7 @@ const ProductDetailComponent = ({ productSlug }: any) => {
                 ></path>
               </svg>
               <Link
-                href={`/mockups/${productSlug.categories[0].title.toLowerCase()}`}
+                href={`/mockups/${productSlug.slug.current}`}
                 className="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400"
               >
                 {productSlug.categories[0].title}
