@@ -1,5 +1,6 @@
 import { buffer } from "micro";
-import * as admin from "firebase-admin";
+const admin = require("firebase-admin");
+const FieldValue = admin.firestore.FieldValue;
 
 //secure connection to firebase from the backend
 const serviceAccount = require("../../artlines-579f5-firebase-adminsdk-b5r6a-fbd6955569.json");
@@ -15,7 +16,9 @@ const endpointSecret = process.env.STRIPE_SIGNING_SECRET;
 
 const fullfillOrder = async (session) => {
   //console.log('fulfilling order', session)
-  
+  const imageUrlsArray = session.metadata.images.split(',');
+ 
+
   return app
     .firestore()
     .collection("users")
@@ -24,8 +27,11 @@ const fullfillOrder = async (session) => {
     .doc(session.id)
     .set({
       amount: session.amount_total / 100,
-      images: JSON.parse(session.metadata.images),
-      timestamp: admin.firestore.FieldValue.serverTimestamp(),
+      images: imageUrlsArray,
+      timestamp: FieldValue.serverTimestamp(),
+      // amount: session.amount_total / 100,
+      // images: JSON.parse(session.metadata.images),
+      // timestamp: admin.firestore.FieldValue.serverTimestamp(),
     })
     .then(() => {
       console.log(`SUCCESS: Order ${session.id} has been added to the DB`);
@@ -49,7 +55,7 @@ export default async function handler(req, res) {
     }
 
     // Log the entire event object for inspection
-    console.log('Stripe Webhook Event:', event);
+    //console.log("Stripe Webhook Event:", event);
 
     //handle the checkout.session.completed event
     if (event.type === "checkout.session.completed") {

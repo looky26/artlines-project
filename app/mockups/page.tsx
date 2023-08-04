@@ -101,7 +101,7 @@ const Mockups = async () => {
           }
 
           return (
-            <Link href={`/mockups/${item.title.toLowerCase()}`}>
+            <Link key={item.title.toLowerCase()} href={`/mockups/${item.title.toLowerCase()}`}>
               <div className="flex justify-center flex-col text-center text-2xl font-bold group cursor-pointer">
                 <img
                   className="h-96 object-contain transition-transform duration-200 transform-gpu group-hover:scale-110"
@@ -127,7 +127,7 @@ const Mockups = async () => {
           }
 
           return (
-            <Link href={`/mockups/${item.title.toLowerCase()}`}>
+            <Link key={item.title.toLowerCase()} href={`/mockups/${item.title.toLowerCase()}`}>
             <div className="text-center text-2xl font-bold mt-10 group cursor-pointer">
               <img
                 className="h-96 object-contain transition-transform duration-200 transform-gpu group-hover:scale-110"
