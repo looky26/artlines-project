@@ -9,17 +9,17 @@ import { RootState } from "../GlobalRedux/store";
 import { addItem, clearNotification  } from "../GlobalRedux/Features/cartSlice";
 
 const ProductDetailComponent = ({ productSlug }: any) => {
-  console.log("SLUG:", productSlug.categories[0].title.toLowerCase())
+  console.log("Catergory:", productSlug.categories[0].title.toLowerCase())
 
   const dispatch = useDispatch();
 
   const notification = useSelector((state: RootState) => state.cart.notification);
 
-  // useEffect(() => {
-  //   if (notification) {
-  //     dispatch(clearNotification());
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (notification) {
+      dispatch(clearNotification());
+    }
+  }, []);
   
 
   return (

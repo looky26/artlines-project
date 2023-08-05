@@ -16,9 +16,7 @@ const fetchProductData = async () => {
   } | order(publishedAt asc)
           
         `;
-  const result = await sanityClient.fetch(query, {
-    cache: "force-cache",
-  });
+  const result = await sanityClient.fetch(query);
   return result;
 };
 
@@ -101,7 +99,7 @@ const Jacket = async () => {
       </div>
       <div className="max-w-5xl mx-auto grid gap-16 lg:grid-cols-3 md:grid-cols-2 grid-cols-fluid">
         {productData.map((item: any) => (
-          <Link href={`/product/${item.slug.current}`}>
+          <Link href={`/product/${item?.slug?.current}`}>
             <div className="flex justify-center flex-col text-center text-2xl font-bold group cursor-pointer">
               <img
                 className="h-96 object-contain transition-transform duration-200 transform-gpu group-hover:scale-110"
