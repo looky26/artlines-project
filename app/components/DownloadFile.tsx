@@ -33,6 +33,7 @@ const storage = getStorage(app);
 const DownloadFile = ({productSlug}:any) => {
     //console.log('productSlug:', productSlug.title + '.rar')
   const [isPaid, setIsPaid] = useState(true);
+  console.log("download page", productSlug.title)
 
   const pathReference = ref(storage, productSlug.title + '.rar');
 
@@ -41,7 +42,6 @@ const DownloadFile = ({productSlug}:any) => {
       const url = await getDownloadURL(pathReference);
       const link = document.createElement("a");
       link.href = url;
-      link.download = "stars.jpg";
       console.log('created link for download:',link)
       link.click();
     } catch (error) {

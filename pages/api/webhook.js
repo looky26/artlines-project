@@ -15,9 +15,9 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const endpointSecret = process.env.STRIPE_SIGNING_SECRET;
 
 const fullfillOrder = async (session) => {
-  //console.log('fulfilling order', session)
-  const imageUrlsArray = session.metadata.images.split(',');
- 
+  console.log("fulfilling order", session);
+  const imageUrlsArray = session.metadata.images.split(",");
+  const itemsTitleArray = session.metadata.title.split(",");
 
   return app
     .firestore()
@@ -26,6 +26,7 @@ const fullfillOrder = async (session) => {
     .collection("orders")
     .doc(session.id)
     .set({
+      title: itemsTitleArray,
       amount: session.amount_total / 100,
       images: imageUrlsArray,
       timestamp: FieldValue.serverTimestamp(),

@@ -12,7 +12,10 @@ export default async function handler(req, res) {
   const imageUrls = await Promise.all(
     items.map((item) => builder.image(item.productImage).url())
   );
-  console.log(imageUrls);
+  const itemTitles = await Promise.all(
+    items.map((item) => item.title)
+  );
+  //console.log(imageUrls);
 
   const transformedItems = items.map((item, index) => ({
     description: item.title,
@@ -37,6 +40,7 @@ export default async function handler(req, res) {
     success_url: `http://localhost:3000/success`,
     cancel_url: `${req.headers.origin}/?canceled=true`,
     metadata: {
+      title: itemTitles.join(','),
       email,
       images: imageUrls.join(','),
     },

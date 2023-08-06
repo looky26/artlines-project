@@ -4,6 +4,7 @@ const nextConfig = {
         appDir: true,
         externalDir: true,
         esmExternals:'loose',
+        serverActions: true,
       },
     env: {
       stripe_public_key: process.env.STRIPE_PUBLIC_KEY

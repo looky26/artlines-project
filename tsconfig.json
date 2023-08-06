@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "FirebaseFileInput.tsx", "utils/authOptions.ts", "app/api/auth/[...nextauth]/route.js", "app/components/NextAuthProvider.js", "app/components/NextAuthProvider.js", "checkout.js", "pages/api/create-checkout-session.js", "backend/firebase--uploader.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "FirebaseFileInput.tsx", "utils/authOptions.ts", "app/api/auth/[...nextauth]/route.js", "app/components/NextAuthProvider.js", "app/components/NextAuthProvider.js", "checkout.js", "pages/api/create-checkout-session.js", "backend/firebase--uploader.js", "firebase.tsx"],
   "exclude": ["node_modules"]
 }
