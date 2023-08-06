@@ -37,7 +37,7 @@ export default async function handler(req, res) {
       quantity: item.quantity,
     })),
     mode: 'payment',
-    success_url: `https://artlines-project.vercel.app/orders`,
+    success_url: `https://artlines-project.vercel.app/success`,
     cancel_url: `${req.headers.origin}/?canceled=true`,
     metadata: {
       title: itemTitles.join(','),
