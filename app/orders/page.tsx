@@ -48,12 +48,10 @@ const Orders = async () => {
   console.log("orders", orders);
   //console.log(user?.emailAddresses[0].emailAddress)
 
-  const containerStyles = {
-    height: orders.length === 0 ? "100vh" : "auto"
-  };
+
 
   return (
-    <div style={containerStyles} className=" bg-white text-black pb-20">
+    <div className=" bg-white text-black pb-20 min-h-screen">
     
       <OrdersClientSide orders={orders}/>
     </div>
