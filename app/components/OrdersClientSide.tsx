@@ -32,9 +32,9 @@ const OrdersClientSide = ({ orders }: any) => {
       </SignedOut>
 
       <SignedIn>
-        <h2>{orders.length} Orders</h2>
+        <h2>{orders?.length} Orders</h2>
         <div className="mt-5 space-y-4">
-          {orders.map((order:any) => (
+          {orders?.map((order:any) => (
             <div className="border rounded-md">
               <div className="flex items-center space-x-10 p-5 bg-gray-100 text-sm text-gray-600">
                 <div>

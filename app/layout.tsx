@@ -3,6 +3,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { Providers } from "./GlobalRedux/provider";
 import { ClerkProvider } from "@clerk/nextjs";
+import Navbar2 from "./components/Navbar2";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -23,6 +24,7 @@ export default function RootLayout({
       
         <body className={inter.className}>
           <Providers>
+            <Navbar2/>
             <Navbar />
             {children}
           </Providers>

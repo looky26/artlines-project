@@ -5,6 +5,7 @@ import OrdersClientSide from "../components/OrdersClientSide";
 
 const fetchOrders = async () => {
   
+  
   const user = await currentUser()
   const admin = require("firebase-admin");
   const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
@@ -16,6 +17,9 @@ const fetchOrders = async () => {
     : admin.app();
 
   //firesbase db orders
+  if(!user) {
+    return
+  }
   const stripeOrders = await app
     .firestore()
     .collection("users")

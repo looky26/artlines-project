@@ -11,7 +11,7 @@ const Navbar = () => {
   const items = useSelector((state: RootState) => state.cart.items);
 
   return (
-    <div className="bg-blue-500 flex justify-between px-10 items-center py-2">
+    <div className="bg-blue-500 hidden lg:flex justify-between px-10 items-center py-2">
       {/* logo */}
       <img className="h-12 cursor-pointer" src="/artlineslogo.png" alt="" />
 
@@ -19,11 +19,11 @@ const Navbar = () => {
       <div className="lg:block hidden">
         <ul className="flex space-x-5 ml-48">
           <Link href={'/'}>
-          <li className="cursor-pointer">HOME</li>
+          <li className="cursor-pointer hover:text-purple-400">HOME</li>
           </Link>
          
     
-          <li className="cursor-pointer">
+          <li className="cursor-pointer hover:text-purple-400">
             <div className="flex items-center">
               SHOP
               <svg
@@ -43,20 +43,20 @@ const Navbar = () => {
             </div>
           </li>
 
-          <li className="cursor-pointer">PAYMENT</li>
+          <li className="cursor-pointer hover:text-purple-400">PAYMENT</li>
         </ul>
       </div>
 
       {/* links right */}
-      <div className="lg:block hidden">
+      <div className="">
         <ul className="flex space-x-5">
-          <li className="cursor-pointer">
+          <li className="cursor-pointer lg:block hidden hover:text-purple-400">
             <Link href={'/account'}>
             MY ACCOUNT
             </Link>
             </li>
-          <li className="cursor-pointer">SEARCH</li>
-          <Link href={'/cart'} className="flex cursor-pointer">
+          <li className="cursor-pointer lg:block hidden hover:text-purple-400">SEARCH</li>
+          <Link href={'/cart'} className="flex cursor-pointer hover:text-purple-400">
             CART
             <svg
               xmlns="http://www.w3.org/2000/svg"

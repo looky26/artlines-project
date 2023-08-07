@@ -4,13 +4,16 @@ import { useDispatch } from "react-redux";
 import { clearCart } from "../GlobalRedux/Features/cartSlice";
 import Link from "next/link";
 
+
 const Success = () => {
   const dispatch = useDispatch();
+  
 
   useEffect(() => {
     dispatch(clearCart());
   }, []);
 
+ 
   return (
     <div className="flex justify-center pt-40 bg-white h-[100vh]">
       <div className="text-black">

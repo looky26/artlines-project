@@ -1,11 +1,18 @@
 "use client";
 
-import { SignIn, SignInButton, SignOutButton, SignedIn, SignedOut, useUser } from "@clerk/nextjs";
+import {
+  SignIn,
+  SignInButton,
+  SignOutButton,
+  SignedIn,
+  SignedOut,
+  useUser,
+} from "@clerk/nextjs";
 import Link from "next/link";
 
 const Account = () => {
   const { isLoaded, isSignedIn, user } = useUser();
-  console.log("Account Page",user)
+  console.log("Account Page", user);
 
   return (
     <div className="bg-white text-black h-[100vh]">
@@ -121,32 +128,44 @@ const Account = () => {
               />
             </svg>
             <div>
-             
-                <SignedOut>
-                  <h1 className="font-bold">Guest Account</h1>
-                  <p>You are not signed in</p>
-                </SignedOut>
-             
-                <SignedIn>
-                  <p> {isLoaded ? `Welcome ${user?.fullName}`: 'loading...'}</p>
-                  <p> {isLoaded ? `Welcome ${user?.primaryEmailAddress?.emailAddress}`: 'loading...'}</p>
-                  
-                </SignedIn>
+              <SignedOut>
+                <h1 className="font-bold">Guest Account</h1>
+                <p>You are not signed in</p>
+
+                <SignInButton mode="modal" redirectUrl="/account">
+                  <button className="bg-orange-300 px-3 py-2 mt-2 rounded-md">Sign in</button>
+                </SignInButton>
+              </SignedOut>
+
               
+
+              <SignedIn>
+                <p> {isLoaded ? `Welcome ${user?.fullName}` : "loading..."}</p>
+                <p>
+                  {" "}
+                  {isLoaded
+                    ? `Welcome ${user?.primaryEmailAddress?.emailAddress}`
+                    : "loading..."}
+                </p>
+                <SignOutButton>
+                  <button className="bg-orange-300 px-3 py-2 mt-2 rounded-md">Sign Out</button>
+                </SignOutButton>
+              </SignedIn>
+             
             </div>
           </div>
         </div>
 
         {/* right */}
 
-       <SignedIn>
-       <div>
-            <h1>Order History</h1>
+        <SignedIn>
+          <div className="">
+            <Link className="bg-orange-300 px-3 py-2 rounded-md" href={'/orders'}>View Order History</Link>
           </div>
-       </SignedIn>
-     
-      <SignedOut>
-      <div className="">
+        </SignedIn>
+
+        <SignedOut>
+          <div className="">
             <h1 className="font-bold text-lg">Join us or sign in</h1>
             <p className="pt-5">
               Track your future orders, checkout faster, and sync your
@@ -157,15 +176,8 @@ const Account = () => {
               An account will be automatically created for you if you don’t have
               one yet.
             </p>
-            <div className="pt-40">
-              <p>This is a protected page.</p>
-              <SignInButton mode="modal" redirectUrl="/account"/>
-              <SignOutButton/>
-            </div>
           </div>
-      </SignedOut>
-    
- 
+        </SignedOut>
       </div>
     </div>
   );
