@@ -32,18 +32,38 @@ const fetchProductDetailData = async (slug: string) => {
 
 export const revalidate = 60;
 
+export async function generateStaticParams() {
+  const query = `*[_type == 'products']
+  {
+    slug
+  }
+  `;
+  const slugs = await sanityClient.fetch(query);
+  const slugRoutes = slugs.map((slug: any) => slug.slug.current);
+  return slugRoutes.map((slug: any) => ({
+    slug: slug,
+  }));
+}
+
+
 // export async function generateStaticParams() {
-//   const query = `*[_type == 'product']
-//   {
+//   const query = `*[_type == 'products'] {
 //     slug
+//   }`;
+
+//   try {
+//     const slugs = await sanityClient.fetch(query);
+//     return slugs.map((slugObject: any) => ({
+//       params: {
+//         slug: slugObject.slug.current
+//       }
+//     }));
+//   } catch (error) {
+//     console.error('Error fetching product slugs:', error);
+//     return [];
 //   }
-//   `;
-//   const slugs = await sanityClient.fetch(query);
-//   const slugRoutes = slugs.map((slug: any) => slug.slug.current);
-//   return slugRoutes.map((slug: any) => ({
-//     slug: slug,
-//   }));
 // }
+
 
 const ProductDetail = async ({ params: { slug } }: PageProps) => {
   const productSlug = await fetchProductDetailData(slug);

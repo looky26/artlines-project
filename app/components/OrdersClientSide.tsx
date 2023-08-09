@@ -1,6 +1,30 @@
 "use client";
 import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import React from "react";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBQ742Ixv8LpH7g4FFacZeA_4q1ugUqEZY",
+  authDomain: "artlines-579f5.firebaseapp.com",
+  projectId: "artlines-579f5",
+  storageBucket: "artlines-579f5.appspot.com",
+  messagingSenderId: "442020715475",
+  appId: "1:442020715475:web:4f2204cf6af08a9e092d26",
+  measurementId: "G-ZXQV98SJ7F"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+
+const storage = getStorage(app);
 
 const OrdersClientSide = ({ orders }: any) => {
   const monthNames = [
@@ -18,7 +42,28 @@ const OrdersClientSide = ({ orders }: any) => {
     "December",
   ];
 
-  console.log(orders);
+  console.log(
+    "titles:",
+    orders
+  );
+
+  const createLinksForDownloadUrl = async (title:any) => {
+    // const title = orders.map(item=>item.items[0].description)
+    //console.log(title)
+    const pathReference = ref(storage, title + '.rar');
+    const url = await getDownloadURL(pathReference);
+    //console.log(url)
+      try {
+      const url = await getDownloadURL(pathReference);
+      const link = document.createElement("a");
+      link.href = url;
+      console.log('created link for download:',link)
+      link.click();
+    } catch (error) {
+      console.error("Error downloading file:", error);
+    }
+
+  }
 
   return (
     <div className="max-w-6xl mx-auto pt-10">
@@ -34,7 +79,7 @@ const OrdersClientSide = ({ orders }: any) => {
       <SignedIn>
         <h2>{orders?.length} Orders</h2>
         <div className="mt-5 space-y-4">
-          {orders?.map((order:any) => (
+          {orders?.map((order: any) => (
             <div className="border rounded-md">
               <div className="flex items-center space-x-10 p-5 bg-gray-100 text-sm text-gray-600">
                 <div>
@@ -59,11 +104,20 @@ const OrdersClientSide = ({ orders }: any) => {
                 </div>
               </div>
               <div className="flex space-x-6">
-
-              
-              {Array.isArray(order.images) &&
-                order.images.map((item:any) => <img key={item} src={item} alt="" className="h-20 object-contain sm:h-32" />)}
-         </div>
+                {Array.isArray(order.images) &&
+                  order.images.map((item: any) => (
+                    <>
+                    <img
+                      key={item}
+                      src={item}
+                      alt=""
+                      className="h-20 object-contain sm:h-32"
+                    />
+                    <p>{order.items[0].description}</p>
+                    <button onClick={()=>createLinksForDownloadUrl(order.items[0].description)}>See links</button>
+                    </>
+                  ))}
+              </div>
             </div>
           ))}
         </div>

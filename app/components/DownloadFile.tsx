@@ -38,15 +38,17 @@ const DownloadFile = ({productSlug}:any) => {
   const pathReference = ref(storage, productSlug.title + '.rar');
 
   const handleDownload = async () => {
-    try {
-      const url = await getDownloadURL(pathReference);
-      const link = document.createElement("a");
-      link.href = url;
-      console.log('created link for download:',link)
-      link.click();
-    } catch (error) {
-      console.error("Error downloading file:", error);
-    }
+    const url = await getDownloadURL(pathReference);
+    console.log(url)
+    // try {
+    //   const url = await getDownloadURL(pathReference);
+    //   const link = document.createElement("a");
+    //   link.href = url;
+    //   console.log('created link for download:',link)
+    //   link.click();
+    // } catch (error) {
+    //   console.error("Error downloading file:", error);
+    // }
   };
 
   return (
