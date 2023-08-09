@@ -98,21 +98,22 @@ const OrdersClientSide = ({ orders }: any) => {
                   </p>
                 </div>
               </div>
-              <div className="flex  space-x-6 items-center">
+              <div className="flex space-x-6 items-center">
                 {Array.isArray(order.images) &&
-                  order.images.map((item: any) => (
-                    <div className="flex flex-col">
+                  order.images.map((image, index) => (
+                    <div className="flex flex-col" key={image}>
                       <img
-                        key={item}
-                        src={item}
+                        src={image}
                         alt=""
                         className="h-20 object-contain sm:h-32"
                       />
-                      <p>{order.items[0].description}</p>
+                      <p>{order.items[index].description}</p>
                       <button
-                        className="h-fit bg-orange-300 "
+                        className="h-fit bg-orange-300"
                         onClick={() =>
-                          createLinksForDownloadUrl(order.items[0].description)
+                          createLinksForDownloadUrl(
+                            order.items[index].description
+                          )
                         }
                       >
                         Download File
