@@ -92,7 +92,7 @@ const OrdersClientSide = ({ orders }: any) => {
                   <p> PHP {order.amount}</p>
                 </div>
                 <div className="text-end flex-1">
-                  <p className="text-sm">{order.id}</p>
+                  <p className="text-sm hidden lg:block">{order.id}</p>
                   <p className="text-blue-500 text-sm whitespace-nowrap sm:text-lg ">
                     {order.items.length} items
                   </p>
