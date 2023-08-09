@@ -100,7 +100,7 @@ const OrdersClientSide = ({ orders }: any) => {
               </div>
               <div className="flex space-x-6 items-center">
                 {Array.isArray(order.images) &&
-                  order.images.map((image, index) => (
+                  order.images.map((image:any, index:any) => (
                     <div className="flex flex-col" key={image}>
                       <img
                         src={image}
