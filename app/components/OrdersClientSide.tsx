@@ -109,7 +109,7 @@ const OrdersClientSide = ({ orders }: any) => {
                       />
                       <p>{order.items[index].description}</p>
                       <button
-                        className="h-fit bg-orange-300"
+                        className="h-fit bg-orange-300 px-3 py-2"
                         onClick={() =>
                           createLinksForDownloadUrl(
                             order.items[index].description
