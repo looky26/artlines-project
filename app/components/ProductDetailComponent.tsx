@@ -118,7 +118,7 @@ const ProductDetailComponent = ({ productSlug }: any) => {
       <div className="flex justify-center flex-wrap lg:flex-nowrap">
         <img
           className={
-            productSlug.slug.current === "twill-cap"
+            productSlug.slug.current === "twill-cap" || "hoodie-zipper-2"
               ? "h-[400px] lg:pr-32 object-contain w-full"
               : "h-[700px] object-contain w-full"
           }
