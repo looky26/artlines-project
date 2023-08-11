@@ -16,13 +16,13 @@ const Account = () => {
 
   return (
     <div className="bg-white text-black h-[100vh]">
-      <div className="max-w-6xl mx-auto pt-36 flex">
+      <div className="max-w-6xl mx-auto pt-36 flex flex-wrap justify-center lg:justify-normal">
         {/* left */}
         <div className="w-[600px]">
-          <h1 className="text-3xl font-bold">Account</h1>
+          <h1 className="text-3xl font-bold text-center md:text-left">Account</h1>
 
           {/* <!-- Breadcrumb --> */}
-          <nav className="flex py-3 text-gray-700 " aria-label="Breadcrumb">
+          <nav className="flex justify-center lg:justify-normal md:justify-normal py-3 text-gray-700 " aria-label="Breadcrumb">
             <ol className="inline-flex items-center space-x-1 md:space-x-3">
               <li className="inline-flex items-center">
                 <Link
@@ -112,7 +112,7 @@ const Account = () => {
             </li> */}
             </ol>
           </nav>
-          <div className="flex items-center space-x-2 pt-5">
+          <div className="flex items-center space-x-2 pt-5 px-10 lg:px-0 md:px-0">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -159,13 +159,13 @@ const Account = () => {
         {/* right */}
 
         <SignedIn>
-          <div className="">
-            <Link className="bg-orange-300 px-3 py-2 rounded-md" href={'/orders'}>View Order History</Link>
+          <div className="mt-40 lg:mt-0 md:mt-0">
+            <Link className="bg-orange-300 px-3 py-2 rounded-md " href={'/orders'}>View Order History</Link>
           </div>
         </SignedIn>
 
         <SignedOut>
-          <div className="">
+          <div className="px-3 mt-10">
             <h1 className="font-bold text-lg">Join us or sign in</h1>
             <p className="pt-5">
               Track your future orders, checkout faster, and sync your

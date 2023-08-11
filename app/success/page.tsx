@@ -9,6 +9,11 @@ const Success = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [hasPayment, setHasPayment] = useState(false);
+  const isDevMode = process.env.NODE_ENV === "development";
+
+  const successUrl = isDevMode
+    ? "https://localhost:3000/success"
+    : "https://artlines-project.vercel.app/success";
 
   useEffect(() => {
     dispatch(clearCart());
@@ -46,6 +51,24 @@ const Success = () => {
   //     </div>
   //   );
   // }
+
+  if (isDevMode) {
+    return (
+      <div className="flex justify-center pt-40 bg-white h-[100vh]">
+        <div className="text-black">
+          <h1 className="text-2xl">
+            Thank you, your order has been confirmed! This is Dev Mode
+          </h1>
+          <p>Click the link below to download your purchased orders</p>
+          <Link href={"/orders"}>
+            <button className="bg-orange-300 py-2 w-full rounded-md mt-10">
+              Go to your orders
+            </button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex justify-center pt-40 bg-white h-[100vh]">

@@ -18,7 +18,9 @@ import {
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 
-const stripePromise = loadStripe('pk_test_51NTrBSA3aTzlY3vKif07vzJozpEG3eieVK2waJdCYGmNPThp12sTNZsDUSSwzZA43GeMFNXqGLSnXzzxlgR3UONV00RLxTppaS');
+const stripePromise = loadStripe(
+  "pk_test_51NTrBSA3aTzlY3vKif07vzJozpEG3eieVK2waJdCYGmNPThp12sTNZsDUSSwzZA43GeMFNXqGLSnXzzxlgR3UONV00RLxTppaS"
+);
 
 interface BasketItem {
   id: string;
@@ -52,7 +54,6 @@ const CheckOutProduct = () => {
     // Redirect customer to stripe checkout
     const result = await stripe?.redirectToCheckout({
       sessionId: checkoutSession.data.id,
-   
     });
 
     if (result?.error) {
@@ -131,12 +132,12 @@ const CheckOutProduct = () => {
           </ol>
         </nav>
       </div>
-      <div className="max-w-6xl mx-auto flex">
+      <div className="max-w-6xl mx-auto flex justify-around flex-wrap gap-y-20">
         {/* left */}
         <div>
           {items.map((item: BasketItem) => (
             <div>
-              <div className="flex items-center space-x-3 w-[400px]">
+              <div className="flex items-center space-x-3 px-5 w-[360px] lg:w-[400px]">
                 <img
                   className="h-16 object-contain"
                   src={urlFor(item.productImage).url()}
@@ -167,14 +168,14 @@ const CheckOutProduct = () => {
               </div>
             </div>
           ))}
-          <div className="flex justify-between w-[400px] pt-10 font-bold text-xl">
+          <div className="flex justify-between px-5 w-[360px] lg:w-[400px] pt-10 font-bold text-xl">
             <h1>TOTAL</h1>
             <p className="ml-10">&#8369;{computeTotalPrice()}</p>
           </div>
 
           {items.length ? (
             <button
-              className="border-2 px-3 py-2 rounded-md mt-10"
+              className="w-fit block mx-auto border-2 px-3 py-2 rounded-md mt-10 hover:bg-red-500 hover:text-white"
               onClick={() => dispatch(clearCart())}
             >
               Clear items
@@ -183,25 +184,29 @@ const CheckOutProduct = () => {
         </div>
 
         {/* right */}
-        <div>
-          <SignedIn>
-            <button
-              onClick={createCheckoutSession}
-              // onClick={() => {
-              //   checkout({
-              //     lineItems: items.map((item: any) => ({
-              //       price: item.priceId,
-              //       quantity: 1,
-              //     })),
-              //   })
+        <div className="">
+          {items.length === 0 ? null : (
+            <SignedIn>
+              <button
+                className="bg-orange-300 px-3 py-2 rounded-md"
+                onClick={createCheckoutSession}
+                // onClick={() => {
+                //   checkout({
+                //     lineItems: items.map((item: any) => ({
+                //       price: item.priceId,
+                //       quantity: 1,
+                //     })),
+                //   })
 
-              // }
+                // }
 
-              // }
-            >
-              Proceed to check out
-            </button>
-          </SignedIn>
+                // }
+              >
+                Proceed to check out
+              </button>
+            </SignedIn>
+          )}
+
           <SignedOut>
             <SignInButton mode="modal" redirectUrl="/cart">
               Please sign in to check out
@@ -226,7 +231,7 @@ const CheckOutProduct = () => {
       )}
 
       {/* Account */}
-      <div className="flex justify-center space-x-20 pt-20 pb-20">
+      <div className="flex justify-center space-x-20 pt-20 pb-20 px-5">
         <div className="flex flex-col items-center space-y-3 cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -243,7 +248,7 @@ const CheckOutProduct = () => {
             />
           </svg>
 
-          <h1>My Account</h1>
+          <h1 className="text-sm lg:text-base">My Account</h1>
         </div>
         <div className="flex flex-col items-center space-y-3 cursor-pointer">
           <svg
@@ -261,7 +266,7 @@ const CheckOutProduct = () => {
             />
           </svg>
 
-          <h1>Track Orders</h1>
+          <h1 className="text-sm lg:text-base">Track Orders</h1>
         </div>
         <div className="flex flex-col items-center space-y-3 cursor-pointer">
           <svg
@@ -279,7 +284,7 @@ const CheckOutProduct = () => {
             />
           </svg>
 
-          <h1>Shopping Bag</h1>
+          <h1 className="text-sm lg:text-base">Shopping Bag</h1>
         </div>
       </div>
     </div>
