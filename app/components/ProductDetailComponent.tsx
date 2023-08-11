@@ -176,7 +176,7 @@ const ProductDetailComponent = ({ productSlug }: any) => {
           <div>
             <h1 className="font-bold">Share this product with your friends</h1>
           </div>
-          <DownloadFile productSlug={productSlug} />
+          {/* <DownloadFile productSlug={productSlug} /> */}
         </div>
       </div>
     </div>
