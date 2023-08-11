@@ -12,8 +12,9 @@ const Navbar = () => {
   return (
     <div className="bg-blue-500 hidden lg:flex justify-between px-10 items-center py-2">
       {/* logo */}
+
       <Link href={"/"}>
-        <img className="h-12 cursor-pointer" src="/artlineslogo.png" alt="" />
+        <img className="h-12" src="/artlineslogo.png" alt="" />
       </Link>
 
       {/* links middle */}
@@ -23,12 +24,11 @@ const Navbar = () => {
             <li className="cursor-pointer hover:text-purple-400">HOME</li>
           </Link>
 
-          <Link href={'/products'}>
-         
-          <li className="cursor-pointer hover:text-purple-400">
-            <div className="flex items-center">
-              SHOP
-              {/* <svg
+          <Link href={"/products"}>
+            <li className="cursor-pointer hover:text-purple-400">
+              <div className="flex items-center">
+                SHOP
+                {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -42,8 +42,8 @@ const Navbar = () => {
                   d="M19.5 8.25l-7.5 7.5-7.5-7.5"
                 />
               </svg> */}
-            </div>
-          </li>
+              </div>
+            </li>
           </Link>
 
           <li className="cursor-pointer hover:text-purple-400">PAYMENT</li>

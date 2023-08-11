@@ -29,9 +29,9 @@ const Navbar2 = () => {
           text-white
         "
       >
-        <div>
+        <Link href={'/'}>
           <img className="h-12 cursor-pointer" src="/artlineslogo.png" alt="" />
-        </div>
+        </Link>
 
         <div className="flex space-x-4 items-center">
           <Link
