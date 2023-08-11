@@ -226,9 +226,12 @@ const CheckOutProduct = () => {
 
           <Link
             href={"/products"}
-            className="px-3 py-2 border-2 rounded-md w-40 block mx-auto mt-10"
+           
           >
+            <button  className="px-3 py-2 border-2 rounded-md w-40 block mx-auto mt-10">
             Browse Store
+            </button>
+           
           </Link>
         </>
       )}
