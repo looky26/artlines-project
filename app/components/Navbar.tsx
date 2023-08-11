@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Link from "next/link";
 import React from "react";
@@ -7,26 +7,28 @@ import { RootState } from "../GlobalRedux/store";
 import { UserButton } from "@clerk/nextjs";
 
 const Navbar = () => {
-
   const items = useSelector((state: RootState) => state.cart.items);
 
   return (
     <div className="bg-blue-500 hidden lg:flex justify-between px-10 items-center py-2">
       {/* logo */}
-      <img className="h-12 cursor-pointer" src="/artlineslogo.png" alt="" />
+      <Link href={"/"}>
+        <img className="h-12 cursor-pointer" src="/artlineslogo.png" alt="" />
+      </Link>
 
       {/* links middle */}
       <div className="lg:block hidden">
         <ul className="flex space-x-5 ml-48">
-          <Link href={'/'}>
-          <li className="cursor-pointer hover:text-purple-400">HOME</li>
+          <Link href={"/"}>
+            <li className="cursor-pointer hover:text-purple-400">HOME</li>
           </Link>
+
+          <Link href={'/products'}>
          
-    
           <li className="cursor-pointer hover:text-purple-400">
             <div className="flex items-center">
               SHOP
-              <svg
+              {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -39,9 +41,10 @@ const Navbar = () => {
                   strokeLinejoin="round"
                   d="M19.5 8.25l-7.5 7.5-7.5-7.5"
                 />
-              </svg>
+              </svg> */}
             </div>
           </li>
+          </Link>
 
           <li className="cursor-pointer hover:text-purple-400">PAYMENT</li>
         </ul>
@@ -51,12 +54,15 @@ const Navbar = () => {
       <div className="">
         <ul className="flex space-x-5">
           <li className="cursor-pointer lg:block hidden hover:text-purple-400">
-            <Link href={'/account'}>
-            MY ACCOUNT
-            </Link>
-            </li>
-          <li className="cursor-pointer lg:block hidden hover:text-purple-400">SEARCH</li>
-          <Link href={'/cart'} className="flex cursor-pointer hover:text-purple-400">
+            <Link href={"/account"}>MY ACCOUNT</Link>
+          </li>
+          <li className="cursor-pointer lg:block hidden hover:text-purple-400">
+            SEARCH
+          </li>
+          <Link
+            href={"/cart"}
+            className="flex cursor-pointer hover:text-purple-400"
+          >
             CART
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +80,7 @@ const Navbar = () => {
             </svg>
             <p>{items.length}</p>
           </Link>
-          <UserButton afterSignOutUrl="/"/>
+          <UserButton afterSignOutUrl="/" />
         </ul>
       </div>
     </div>
