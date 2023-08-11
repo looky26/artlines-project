@@ -16,7 +16,7 @@ const Account = () => {
 
   return (
     <div className="bg-white text-black h-[100vh]">
-      <div className="max-w-6xl mx-auto pt-36 flex flex-wrap justify-center lg:justify-normal">
+      <div className={`max-w-6xl mx-auto pt-36 flex flex-wrap lg:flex-nowrap ${user ? 'justify-center lg:justify-normal' : ''}`} >
         {/* left */}
         <div className="w-[600px]">
           <h1 className="text-3xl font-bold text-center md:text-left">Account</h1>
@@ -112,7 +112,7 @@ const Account = () => {
             </li> */}
             </ol>
           </nav>
-          <div className="flex items-center space-x-2 pt-5 px-10 lg:px-0 md:px-0">
+          <div className="flex justify-center md:justify-normal lg:justify-normal items-center space-x-2 pt-5 px-10 lg:px-0 md:px-0">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -127,7 +127,7 @@ const Account = () => {
                 d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
               />
             </svg>
-            <div>
+            <div className="">
               <SignedOut>
                 <h1 className="font-bold">Guest Account</h1>
                 <p>You are not signed in</p>
