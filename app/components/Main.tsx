@@ -8,7 +8,7 @@ const Main = () => {
         <h1 className="text-4xl lg:text-[50px] font-bold pt-20 mb-10">
           WHAT IS MOCK UP
         </h1>
-        <p className="text-base lg:text-lg  pt-5">
+        <p className="text-base lg:text-lg pt-5">
           Mockups help to breathe life into your designs and present them in
           real-life settings. Basically, mockups are pre-created image templates
           that make it easy to seamlessly insert your own content into. Add your
@@ -45,7 +45,7 @@ const Main = () => {
       </div>
 
       {/* Featured products */}
-      <FeaturedProducts/>
+      <FeaturedProducts />
 
       {/* Gcash Payment */}
       <div className="bg-[#2D7EF4] max-w-[1300px] mx-auto flex flex-col lg:flex-row-reverse justify-between mt-36 pb-10">
@@ -71,7 +71,9 @@ const Main = () => {
       <div className="max-w-[1300px] mx-auto flex flex-col lg:flex-row lg:justify-between mt-20 lg:mt-36 space-y-10 lg:space-y-0 px-5 pb-10">
         <div className="space-y-5">
           <h1 className="text-5xl font-bold">Payment</h1>
-          <p className="text-xl font-bold">We accept Visa, MasterCard®, PayPal , Gcash</p>
+          <p className="text-xl font-bold">
+            We accept Visa, MasterCard®, PayPal , Gcash
+          </p>
         </div>
 
         <div className="max-w-3xl space-y-10 text-lg">
@@ -80,11 +82,12 @@ const Main = () => {
             towers above everything else. Our store’s overall cyber security and
             particularly the billing process security is something we do not
             take lightly. All of your shopping here will be a fun and safe
-            experience. 
+            experience.
           </p>
-          <p>If you have any difficulties in the checkout process,
-            you can always address our customer support department with your
-            billing questions.</p>
+          <p>
+            If you have any difficulties in the checkout process, you can always
+            address our customer support department with your billing questions.
+          </p>
         </div>
       </div>
 
