@@ -206,12 +206,15 @@ const CheckOutProduct = () => {
               </button>
             </SignedIn>
           )}
-
-          <SignedOut>
-            <SignInButton mode="modal" redirectUrl="/cart">
-              Please sign in to check out
-            </SignInButton>
-          </SignedOut>
+          {items.length === 0 ? null : (
+            <SignedOut>
+              <SignInButton mode="modal" redirectUrl="/cart">
+                <button className="bg-orange-300 px-3 py-2 rounded-md">
+                  Please sign in to check out
+                </button>
+              </SignInButton>
+            </SignedOut>
+          )}
         </div>
       </div>
 

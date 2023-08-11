@@ -19,7 +19,7 @@ const Navbar = () => {
 
       {/* links middle */}
       <div className="lg:block hidden">
-        <ul className="flex space-x-5 ml-48">
+        <ul className="flex space-x-5 ml-48 text-white">
           <Link href={"/"}>
             <li className="cursor-pointer hover:text-purple-400">HOME</li>
           </Link>
@@ -51,7 +51,7 @@ const Navbar = () => {
       </div>
 
       {/* links right */}
-      <div className="">
+      <div className="text-white">
         <ul className="flex space-x-5">
           <li className="cursor-pointer lg:block hidden hover:text-purple-400">
             <Link href={"/account"}>MY ACCOUNT</Link>
