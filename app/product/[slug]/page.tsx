@@ -70,11 +70,11 @@ const ProductDetail = async ({ params: { slug } }: PageProps) => {
   //console.log(productSlug.slug);
 
   return (
-    <div className="bg-white text-black">
+    <div className="bg-white text-black h-[80vh]">
       <ProductDetailComponent productSlug={productSlug} />
 
       {/* Account */}
-      <div className="flex justify-center space-x-20 pt-20 pb-20">
+      <div className="flex justify-center space-x-20 pt-20 ">
         <div className="flex flex-col items-center space-y-3 cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -132,7 +132,7 @@ const ProductDetail = async ({ params: { slug } }: PageProps) => {
       </div>
 
       {/* Footer */}
-      <footer className="bg-black text-center text-white h-40 pt-10 ">
+      <footer className="bg-black text-center text-white h-40 pt-10 mt-60">
         <h1>artlinesgraphicdesign</h1>
         <a href="#">Report Abuse</a>
       </footer>

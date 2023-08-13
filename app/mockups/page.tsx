@@ -25,7 +25,7 @@ const Mockups = async () => {
 
   return (
     <div className="bg-white text-black">
-      <div className="max-w-6xl mx-auto pt-32">
+      <div className="max-w-6xl mx-auto pt-32 px-5 lg:px-0">
         <h1 className="text-4xl font-bold">MOCKUPS</h1>
 
         {/* <!-- Breadcrumb --> */}

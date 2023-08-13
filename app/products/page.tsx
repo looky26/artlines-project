@@ -5,34 +5,34 @@ import Link from "next/link";
 const Products = () => {
   return (
     <div className="bg-white text-black pt-20">
-      <div className="grid grid-cols-3 text-center max-w-7xl mx-auto gap-x-10">
+      <div className="grid grid-cols-3 text-center max-w-7xl mx-auto gap-x-10 px-1">
         <Link href={'/mockups'} className="transition-transform duration-300 transform-gpu hover:scale-105">
           <img
             src="https://media.tenor.com/-vtg2LCmMzkAAAAi/swipeup-shopnow.gif"
             alt=""
           />
-          <h1 className="text-2xl pt-5 font-bold">MOCKUPS</h1>
+          <h1 className="text-xl md:text-2xl lg:text-2xl pt-5 font-bold">MOCKUPS</h1>
         </Link>
         <div className="transition-transform duration-300 transform-gpu hover:scale-105">
           <img
             src="https://media.tenor.com/-vtg2LCmMzkAAAAi/swipeup-shopnow.gif"
             alt=""
           />
-          <h1 className="text-2xl pt-5 font-bold">PATTERNS</h1>
+          <h1 className="text-xl md:text-2xl lg:text-2xl pt-5 font-bold">PATTERNS</h1>
         </div>
         <div className="transition-transform duration-300 transform-gpu hover:scale-105">
           <img
             src="https://media.tenor.com/-vtg2LCmMzkAAAAi/swipeup-shopnow.gif"
             alt=""
           />
-          <h1 className="text-2xl pt-5 font-bold">DESIGN</h1>
+          <h1 className="text-xl md:text-2xl lg:text-2xl pt-5 font-bold">DESIGN</h1>
         </div>
       </div>
 
       <FeaturedProducts />
 
       {/* Account */}
-      <div className="flex justify-center space-x-28 pt-20">
+      <div className="flex justify-center space-x-20 md:space-x-28 pt-20 px-5">
         <div className="flex flex-col items-center space-y-3 cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +49,7 @@ const Products = () => {
             />
           </svg>
 
-          <h1>My Account</h1>
+          <h1 className="text-sm">My Account</h1>
         </div>
         <div className="flex flex-col items-center space-y-3 cursor-pointer">
           <svg
@@ -67,7 +67,7 @@ const Products = () => {
             />
           </svg>
 
-          <h1>Track Orders</h1>
+          <h1 className="text-sm">Track Orders</h1>
         </div>
         <div className="flex flex-col items-center space-y-3 cursor-pointer">
           <svg
@@ -85,7 +85,7 @@ const Products = () => {
             />
           </svg>
 
-          <h1>Shopping Bag</h1>
+          <h1 className="text-sm">Shopping Bag</h1>
         </div>
       </div>
 

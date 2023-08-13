@@ -29,7 +29,7 @@ const Tshirt = async () => {
 
   return (
     <div className="bg-white text-black">
-      <div className="max-w-5xl mx-auto pt-32">
+      <div className="max-w-5xl mx-auto pt-32 px-5">
         <h1 className="text-4xl font-bold">TSHIRT</h1>
 
         {/* <!-- Breadcrumb --> */}
@@ -114,8 +114,8 @@ const Tshirt = async () => {
         ))}
       </div>
 
-      {/* Account */}
-      <div className="flex justify-center space-x-20 pt-20 pb-20">
+     {/* Account */}
+     <div className="flex justify-center space-x-20 md:space-x-28 pt-20 px-5">
         <div className="flex flex-col items-center space-y-3 cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -132,7 +132,7 @@ const Tshirt = async () => {
             />
           </svg>
 
-          <h1>My Account</h1>
+          <h1 className="text-sm">My Account</h1>
         </div>
         <div className="flex flex-col items-center space-y-3 cursor-pointer">
           <svg
@@ -150,7 +150,7 @@ const Tshirt = async () => {
             />
           </svg>
 
-          <h1>Track Orders</h1>
+          <h1 className="text-sm">Track Orders</h1>
         </div>
         <div className="flex flex-col items-center space-y-3 cursor-pointer">
           <svg
@@ -168,12 +168,12 @@ const Tshirt = async () => {
             />
           </svg>
 
-          <h1>Shopping Bag</h1>
+          <h1 className="text-sm">Shopping Bag</h1>
         </div>
       </div>
       {/* Footer */}
-      <footer className="bg-black text-center text-white h-40 pt-10 ">
-        <h1>artlinesgraphicdesign</h1>
+      <footer className="bg-black text-center text-white h-40 pt-10 mt-20 ">
+        <h1 className="text-2xl mb-2">artlinesgraphicdesign</h1>
         <a href="#">Report Abuse</a>
       </footer>
     </div>

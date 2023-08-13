@@ -79,12 +79,11 @@ const OrdersClientSide = ({ orders }: any) => {
               <div className="flex items-center space-x-10 p-5 bg-gray-100 text-sm text-gray-600">
                 <div>
                   <p className="text-xs font-bold">Order Placed</p>
+                  
                   <p>
-                    <p>
-                      {new Date(order.timestamp).getDate()}{" "}
-                      {monthNames[new Date(order.timestamp).getMonth()]}{" "}
-                      {new Date(order.timestamp).getFullYear()}
-                    </p>
+                    {new Date(order.timestamp).getDate()}{" "}
+                    {monthNames[new Date(order.timestamp).getMonth()]}{" "}
+                    {new Date(order.timestamp).getFullYear()}
                   </p>
                 </div>
                 <div className="flex-1">
@@ -100,7 +99,7 @@ const OrdersClientSide = ({ orders }: any) => {
               </div>
               <div className="flex space-x-6 items-center">
                 {Array.isArray(order.images) &&
-                  order.images.map((image:any, index:any) => (
+                  order.images.map((image: any, index: any) => (
                     <div className="flex flex-col" key={image}>
                       <img
                         src={image}

@@ -49,7 +49,7 @@ const Orders = async () => {
   // const { isLoaded, isSignedIn, user } = useUser();
   const orders = await fetchOrders();
   const user = await currentUser()
-  console.log("orders", orders);
+  //console.log("orders", orders);
   //console.log(user?.emailAddresses[0].emailAddress)
 
 

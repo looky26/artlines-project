@@ -10,6 +10,12 @@ const Cart = () => {
   return (
    <div>
     <CheckOutProduct/>
+
+      {/* Footer */}
+      <footer className="bg-black text-center text-white h-40 pt-10">
+        <h1>artlinesgraphicdesign</h1>
+        <a href="#">Report Abuse</a>
+      </footer>
    </div>
   );
 };

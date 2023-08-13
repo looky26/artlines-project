@@ -62,7 +62,7 @@ const CheckOutProduct = () => {
   };
 
   return (
-    <div className="bg-white h-[100vh] text-black">
+    <div className="bg-white h-[80vh] text-black">
       <div className="max-w-6xl mx-auto px-10 pt-32">
         <h1 className="text-3xl font-bold">Shopping cart</h1>
 
@@ -224,14 +224,10 @@ const CheckOutProduct = () => {
             Your shopping cart is empty
           </h1>
 
-          <Link
-            href={"/products"}
-           
-          >
-            <button  className="px-3 py-2 border-2 rounded-md w-40 block mx-auto mt-10">
-            Browse Store
+          <Link href={"/products"}>
+            <button className="px-3 py-2 border-2 rounded-md w-40 block mx-auto mt-10">
+              Browse Store
             </button>
-           
           </Link>
         </>
       )}
